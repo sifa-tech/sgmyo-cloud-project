@@ -7,8 +7,6 @@ Bu proje, Siber Güvenlik MYO - Sanallaştırma ve Bulut Bilişim Teknolojileri 
 
 Proje, AWS üzerinde Multi-AZ (Çoklu Erişilebilirlik Bölgesi) mimarisi kullanılarak tasarlanmıştır. Sistem, tek bir veri merkezindeki kesintilere karşı dayanıklı olacak şekilde iki farklı Availability Zone (us-east-1a ve us-east-1b) üzerine dağıtılmıştır.
 
-![Mimari Diyagramı](docs/architecture-diagram.png)
-
 ### Temel Bileşenler
 
 * **VPC ve Ağ Yapısı:** 10.0.0.0/16 bloğunda özel bir VPC oluşturulmuş; 2 adet Public ve 2 adet Private Subnet ile ağ izolasyonu sağlanmıştır.
@@ -18,8 +16,6 @@ Proje, AWS üzerinde Multi-AZ (Çoklu Erişilebilirlik Bölgesi) mimarisi kullan
 * **NAT Gateway:** Private Subnet içerisindeki sunucuların güvenli bir şekilde internete çıkıp güncelleme alabilmesi için yapılandırılmıştır.
 
 ## Teknik Gereksinimlerin Karşılanması
-
-Proje, dönem ödevi teknik şartnamesindeki maddeleri aşağıdaki şekilde karşılamaktadır:
 
 1.  **Konteynerizasyon ve Port Yapılandırması:**
     Uygulama Docker konteyneri içerisinde izole edilmiştir. Şartnamede belirtildiği üzere uygulama sunucuları **Port 5889** üzerinden hizmet vermektedir. Load Balancer trafiği bu porta yönlendirmektedir.
@@ -35,8 +31,6 @@ Proje, dönem ödevi teknik şartnamesindeki maddeleri aşağıdaki şekilde kar
     * **Systems Manager:** Sunuculara SSH portu (22) açılmadan, AWS konsolu üzerinden güvenli erişim sağlanmaktadır.
 
 ## Kurulum ve Dağıtım
-
-Sistemin çalışır hale getirilmesi için aşağıdaki adımlar uygulanmıştır:
 
 1.  **Launch Template:** Docker kurulumunu ve uygulamanın 5889 portunda başlatılmasını sağlayan User Data betikleri hazırlandı.
 2.  **Hedef Grubu (Target Group):** 5889 portunu dinleyen sunucular için sağlık kontrolleri (Health Check) tanımlandı.
